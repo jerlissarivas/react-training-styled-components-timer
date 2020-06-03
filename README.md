@@ -1,4 +1,4 @@
-Code Along/Tutorial with Alejandro Roman Arguello.
+React Timer - Styled Components Code Along/Tutorial with Alejandro Roman Arguello.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
