@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
 
-function App() {
+const App = () => {
+  const [isActive, toggleActive] = useState(false);
+  const [initialTime, setInitialTime] = useState(0);
+
+  useEffect(() => {
+    let interval = null;
+    if (isActive) {
+      interval = setInterval(() => {
+        setInitialTime((prev) => prev + 1);
+      }, 1000);
+    }
+  }, [isActive]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Timer: {initialTime}</h1>
+      <button onClick={() => toggleActive(true)}>
+        {isActive ? "Pause" : "Start"}
+      </button>
+      <button>Reset</button>
     </div>
   );
-}
+};
 
 export default App;
