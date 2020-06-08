@@ -10,15 +10,25 @@ const App = () => {
       interval = setInterval(() => {
         setInitialTime((prev) => prev + 1);
       }, 1000);
+    } else if (!isActive && initialTime !== 0) {
+      clearInterval(interval);
     }
-  }, [isActive]);
+
+    return () => clearInterval(interval);
+  }, [isActive, initialTime]);
+
+  const handleReset = () => {
+    toggleActive(false);
+    setInitialTime(0);
+  };
+
   return (
     <div>
       <h1>Timer: {initialTime}</h1>
-      <button onClick={() => toggleActive(true)}>
+      <button onClick={() => toggleActive((prev) => !prev)}>
         {isActive ? "Pause" : "Start"}
       </button>
-      <button>Reset</button>
+      <button onClick={handleReset}>Reset</button>
     </div>
   );
 };
