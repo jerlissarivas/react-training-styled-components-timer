@@ -37,6 +37,10 @@ const App = () => {
     setInitialTime(0);
   };
 
+  const handleRecord = () => {
+    setTimes((prev) => [...prev, initialTime]);
+  };
+
   return (
     <Container>
       <Title>Timer: {initialTime}</Title>
@@ -46,7 +50,16 @@ const App = () => {
       <Button danger onClick={handleReset}>
         Reset
       </Button>
-      {isActive && initialTime !== 0 ? <Button>Record</Button> : null}
+      {!isActive && initialTime !== 0 ? (
+        <Button onClick={handleRecord}>Record</Button>
+      ) : null}
+      {times.length > 0 ? (
+        <ul>
+          {times.map((time) => (
+            <List time={time}>{time}</List>
+          ))}
+        </ul>
+      ) : null}
     </Container>
   );
 };
