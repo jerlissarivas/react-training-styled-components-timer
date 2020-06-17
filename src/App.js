@@ -14,6 +14,10 @@ const Button = styled.button`
     success ? "green" : danger ? "red" : null};
 `;
 
+const List = styled.li`
+  color: ${(props) => (props.time % 2 === 0 ? "red" : "blue")};
+`;
+
 const App = () => {
   const [isActive, toggleActive] = useState(false);
   const [initialTime, setInitialTime] = useState(0);
